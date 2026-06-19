@@ -1,26 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --primary: #D97706;
+  --primary-light: #FEF3C7;
+  --primary-dark: #B45309;
+  --bg: #FFFDF8;
+  --surface: #FFFFFF;
+  --text: #1F2937;
+  --muted: #6B7280;
+  --border: #E5E7EB;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+.sidebar-item { @apply flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-600 hover:bg-gray-50 transition-colors duration-150 cursor-pointer; }
+.sidebar-item.active { @apply bg-amber-50 text-amber-700 font-medium border-l-2 border-amber-500 rounded-l-none; }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
+.btn-primary { @apply bg-amber-600 hover:bg-amber-700 text-white text-sm font-medium px-4 py-2 rounded-lg active:scale-95 transition-all duration-75; }
+.btn-outline { @apply border border-amber-600 text-amber-600 hover:bg-amber-50 text-sm font-medium px-4 py-2 rounded-lg active:scale-95 transition-all duration-75; }
+.btn-ghost { @apply text-sm text-gray-500 hover:text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-50 transition-colors; }
+
+.card { @apply bg-white border border-gray-100 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200; }
+.input-field { @apply w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent transition-all; }
+.section-label { @apply text-xs font-semibold uppercase tracking-widest text-amber-600 mb-3; }
+.page-title { @apply text-2xl font-semibold tracking-tight text-gray-900; }
+.table-header { @apply text-xs font-semibold uppercase tracking-wide text-gray-500 bg-gray-50 px-4 py-3; }
+.table-row { @apply px-4 py-3 text-sm text-gray-700 border-b border-gray-50 hover:bg-amber-50/40 transition-colors duration-100; }

@@ -1,0 +1,63 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String      @id @default(cuid())
+  name      String
+  email     String      @unique
+  password  String
+  role      Role        @default(MAHASISWA)
+  nim       String?
+  createdAt DateTime    @default(now())
+  pengajuan Pengajuan[]
+}
+
+enum Role {
+  MAHASISWA
+  ADMIN
+  PRODI
+  KAJUR
+  PIMPINAN
+}
+
+model Pengajuan {
+  id         String    @id @default(cuid())
+  nomorSurat String?   @unique
+  jenisSurat String
+  keperluan  String
+  status     Status    @default(BARU)
+  catatan    String?
+  filePath   String?
+  suratPath  String?
+  userId     String
+  user       User      @relation(fields: [userId], references: [id])
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  riwayat    Riwayat[]
+}
+
+enum Status {
+  BARU
+  DIPERIKSA
+  DIVERIFIKASI
+  DIPROSES
+  DITANDATANGANI
+  DITERIMA
+  DIARSIPKAN
+}
+
+model Riwayat {
+  id          String    @id @default(cuid())
+  pengajuanId String
+  pengajuan   Pengajuan @relation(fields: [pengajuanId], references: [id])
+  status      Status
+  catatan     String?
+  aktor       String
+  createdAt   DateTime  @default(now())
+}
