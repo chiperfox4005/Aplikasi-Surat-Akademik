@@ -1,36 +1,184 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Sistem Pengajuan Surat Akademik (SPSA)
 
-## Getting Started
+Sistem Pengajuan Surat Akademik (SPSA) merupakan aplikasi berbasis web yang dikembangkan untuk mendigitalisasi proses pengajuan, verifikasi, persetujuan, serta pengarsipan surat akademik di lingkungan perguruan tinggi.
 
-First, run the development server:
+Platform ini dirancang untuk meningkatkan efisiensi layanan administrasi akademik melalui proses yang terstruktur, transparan, terdokumentasi, dan dapat dipantau secara real-time.
+
+---
+
+## Deskripsi Sistem
+
+SPSA mendukung alur pengelolaan surat akademik dari tahap pengajuan oleh mahasiswa hingga proses persetujuan dan pengarsipan oleh pihak terkait.
+
+Sistem menerapkan mekanisme Role Based Access Control (RBAC) sehingga setiap pengguna hanya dapat mengakses fitur sesuai kewenangannya.
+
+---
+
+## Fitur Utama
+
+### Autentikasi dan Otorisasi
+
+* Login pengguna
+* Manajemen sesi
+* Role Based Access Control (RBAC)
+
+### Mahasiswa
+
+* Mengajukan surat akademik
+* Mengunggah dokumen pendukung
+* Melihat status pengajuan
+* Mengakses riwayat pengajuan
+* Menerima notifikasi proses
+
+### Admin Akademik
+
+* Memvalidasi kelengkapan dokumen
+* Mengelola antrean pengajuan
+* Mengajukan revisi dokumen
+
+### Program Studi / Fakultas
+
+* Melakukan verifikasi akademik
+* Menyetujui atau menolak pengajuan
+
+### Ketua Jurusan
+
+* Memberikan persetujuan akhir
+* Menjalankan proses tanda tangan
+
+### Pimpinan
+
+* Monitoring layanan akademik
+* Analisis data pengajuan
+* Pelaporan dan evaluasi
+
+### Arsip Digital
+
+* Penyimpanan dokumen
+* Pencarian dan filter arsip
+* Pelacakan riwayat surat
+
+---
+
+## Alur Proses
+
+```text
+Baru
+↓
+Diperiksa
+↓
+Diverifikasi
+↓
+Diproses
+↓
+Ditandatangani
+↓
+Diterima
+↓
+Diarsipkan
+```
+
+---
+
+## Teknologi
+
+### Frontend
+
+* Next.js
+* TypeScript
+* Tailwind CSS
+
+### Backend
+
+* REST API
+* Next.js Server Actions
+
+### Database
+
+* MySQL
+* Prisma ORM
+
+### Authentication
+
+* NextAuth
+
+---
+
+## Struktur Proyek
+
+```text
+src/
+├── app/
+│   ├── login/
+│   ├── mahasiswa/
+│   ├── admin/
+│   ├── prodi/
+│   ├── kajur/
+│   ├── pimpinan/
+│   └── api/
+│
+├── components/
+├── lib/
+├── services/
+├── hooks/
+├── types/
+
+prisma/
+public/
+```
+
+---
+
+## Instalasi
+
+Clone repository:
+
+```bash
+git clone https://github.com/chiperfox4005/Aplikasi-Surat-Akademik.git
+```
+
+Masuk ke folder proyek:
+
+```bash
+cd aplikasi-surat-akademik
+```
+
+Install dependency:
+
+```bash
+npm install
+```
+
+Jalankan migrasi database:
+
+```bash
+npx prisma migrate dev
+```
+
+Jalankan aplikasi:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Buka browser:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```text
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## Tujuan Pengembangan
 
-To learn more about Next.js, take a look at the following resources:
+* Mempercepat layanan administrasi akademik
+* Mengurangi proses manual
+* Meningkatkan transparansi status pengajuan
+* Mempermudah pengarsipan dokumen
+* Mendukung transformasi layanan akademik berbasis digital
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Lisensi
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Proyek ini dikembangkan untuk kebutuhan akademik dan pengembangan sistem informasi.
