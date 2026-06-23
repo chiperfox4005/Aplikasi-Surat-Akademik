@@ -2,7 +2,8 @@
 import { useState } from 'react'
 import { signIn } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
-import { FileText, Eye, EyeOff } from 'lucide-react'
+import { FileText, Eye, EyeOff, ArrowLeft } from 'lucide-react'
+import Link from 'next/link'
 
 export default function LoginPage() {
   const [email, setEmail] = useState('')
@@ -60,8 +61,12 @@ export default function LoginPage() {
       </div>
 
       {/* Right Panel */}
-      <div className="flex-1 flex items-center justify-center p-8 bg-[#FFFDF8]">
-        <div className="w-full max-w-sm">
+      <div className="flex-1 flex flex-col p-8 bg-[#FFFDF8] relative">
+        <Link href="/" className="absolute top-8 right-8 text-sm font-medium text-gray-500 hover:text-gray-900 flex items-center gap-2 transition-colors">
+          <ArrowLeft size={16} /> Kembali ke Beranda
+        </Link>
+        <div className="flex-1 flex items-center justify-center">
+          <div className="w-full max-w-sm">
           <div className="mb-8">
             <h2 className="text-2xl font-semibold text-gray-900 mb-1">Masuk ke Akun</h2>
             <p className="text-sm text-gray-500">Gunakan kredensial yang diberikan oleh admin</p>
@@ -90,6 +95,7 @@ export default function LoginPage() {
               {loading ? 'Memproses...' : 'Masuk'}
             </button>
           </form>
+        </div>
         </div>
       </div>
     </div>

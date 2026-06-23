@@ -30,7 +30,7 @@ export default function AjukanPage() {
       <Sidebar role={user.role} name={user.name ?? ''} />
       <main className="ml-64 flex-1 px-8 py-8">
         <PageHeader title="Ajukan Surat" subtitle="Isi formulir pengajuan surat akademik" breadcrumb={['Beranda','Ajukan Surat']} />
-        <div className="max-w-2xl">
+        <div className="w-full">
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="card p-6 space-y-5">
               <p className="section-label">Informasi Surat</p>
@@ -52,11 +52,15 @@ export default function AjukanPage() {
 
             <div className="card p-6">
               <p className="section-label">Dokumen Pendukung</p>
-              <div className="border-2 border-dashed border-gray-200 rounded-xl p-8 text-center hover:border-amber-300 transition-colors">
-                <Upload size={28} className="mx-auto text-gray-300 mb-2" />
-                <p className="text-sm text-gray-500">Klik atau seret file ke sini</p>
+              <label className="border-2 border-dashed border-amber-300/50 bg-amber-50/30 rounded-xl p-8 text-center hover:border-amber-400 hover:bg-amber-50/50 transition-colors cursor-pointer block group">
+                <input type="file" className="hidden" accept=".pdf,.jpg,.jpeg,.png" onChange={(e) => {
+                  // TODO: Handle file upload
+                  console.log(e.target.files)
+                }} />
+                <Upload size={28} className="mx-auto text-amber-500/50 group-hover:text-amber-500 mb-3 transition-colors" />
+                <p className="text-sm font-medium text-gray-600 group-hover:text-gray-900 transition-colors">Klik untuk memilih atau seret file ke sini</p>
                 <p className="text-xs text-gray-400 mt-1">PDF, JPG, PNG — Maks. 5MB (opsional)</p>
-              </div>
+              </label>
             </div>
 
             {error && <p className="text-xs text-red-500 bg-red-50 px-3 py-2 rounded-lg">{error}</p>}
